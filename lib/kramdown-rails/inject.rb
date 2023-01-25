@@ -9,7 +9,7 @@ module KramdownRails
       end
 
       def call(template, source)
-        compiled_template = erb.call(template)
+        compiled_template = erb.call(template, source)
         "Kramdown::Document.new(begin;#{compiled_template};end).to_html.html_safe"
       end
 
