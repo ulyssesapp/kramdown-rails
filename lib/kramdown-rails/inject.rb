@@ -27,7 +27,7 @@ module KramdownRails
         Thread.current[:erb_template] ||= ActionView::Template.registered_template_handler(:erb)
       end
 
-      def call(template)
+      def call(template, source)
         compiled_template = erb.call(template)
         "Kramdown::Document.new(begin;#{compiled_template};end).to_html.html_safe"
       end
