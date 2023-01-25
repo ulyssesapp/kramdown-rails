@@ -1,24 +1,5 @@
 require 'kramdown'
 
-module Kramdown
-  module Converter
-    module Html
-
-      include ActionView::Helpers::AssetTagHelper
-
-      def convert_img(element, indent)
-        attributes = element.attr.dup
-        link = attributes.delete('src')
-        image_tag(
-          ActionController::Base.helpers.asset_path(link),
-          attributes
-        )
-      end
-
-    end
-  end
-end
-
 module KramdownRails
   module TemplateHandler
     class << self
